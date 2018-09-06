@@ -1,0 +1,19 @@
+label,new_label,color,software,group
+merge_fastq,zcat,#ff5a5a,MERGE FASTQ - LIBRARY,Fastq
+seqprep,seqprep,#ff5a5a,TRIM ADAPTER OVERLAP CONSENSUS,Fastq
+bwa_aln,bwa,#4e94d0,ALIGN READS,Alignment
+bwa_bam,bwa,#4e94d0,CREATE BAM,Alignment
+remove_duplicates,picard,#ff5a5a,REMOVE DUPLICATES,Library QC metrics
+pmdtools_lib,pmdtools,#49d85d,PMD SCORE,Library QC metrics
+oxoG_metrics_lib,picard,#49d85d,OXIDATIVE G QC,Library QC metrics
+wgs_metrics_lib,picard,#49d85d,WGS QC - LIBRARY,Library QC metrics
+collect_alignment_metrics_library,picard,#49d85d,ALIGNMENT QC - LIBRARY,Library QC metrics
+bam_to_vcf_library,samtools/bcftools,#a676e9,BAM TO VCF - LIBRARY,Variants
+merge_bams,samtools,#ff5a5a,MERGE LIBRARIES,BAM Processing
+pmdtools,pmdtools,#49d85d,PMD SCORE,Individual QC Metrics
+wgs_metrics,picard,#49d85d,WGS QC - INDIVIDUAL,Individual QC Metrics
+collect_alignment_metrics,picard,#49d85d,ALIGNMENT QC - INDIVIDUAL,Individual QC Metrics
+bam_to_vcf,samtools/bcftools,#a676e9,BAM TO VCF - INDIVIDUAL,Variants
+vcf_to_fasta,vcftools,#a676e9,CONSENSUS FASTA,Variants
+randfa,htsbox,#a676e9,RANDFA,Variants
+multiqc,multiqc,#f77d2f,MULTIQC REPORT,Report

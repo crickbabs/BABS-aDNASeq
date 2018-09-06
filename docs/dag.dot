@@ -1,0 +1,282 @@
+digraph dag {
+p0 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
+p1 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="splitCsv"];
+p0 -> p1;
+
+p1 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="splitCsv"];
+p2 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+p1 -> p2;
+
+p2 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+p3 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="groupTuple"];
+p2 -> p3 [label="fastq_ch"];
+
+p3 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="groupTuple"];
+p4 [label="merge_fastq"];
+p3 -> p4 [label="fastq_mergeFastq_ch"];
+
+p4 [label="merge_fastq"];
+p5 [label="seqprep"];
+p4 -> p5 [label="mergedFastq_ch"];
+
+p5 [label="seqprep"];
+p8 [label="bwa_aln"];
+p5 -> p8 [label="seqprep_ch"];
+
+p5 [label="seqprep"];
+p7 [shape=point];
+p5 -> p7 [label="seqprep_log_ch"];
+
+p5 [label="seqprep"];
+p6 [shape=point];
+p5 -> p6 [label="seqprep_stats_ch"];
+
+p8 [label="bwa_aln"];
+p10 [label="bwa_bam"];
+p8 -> p10 [label="bwa_aln_ch"];
+
+p8 [label="bwa_aln"];
+p9 [shape=point];
+p8 -> p9 [label="bwa_aln_log_ch"];
+
+p10 [label="bwa_bam"];
+p13 [label="remove_duplicates"];
+p10 -> p13 [label="bwa_bam_markdups_ch"];
+
+p10 [label="bwa_bam"];
+p12 [shape=point];
+p10 -> p12 [label="bwa_bam_qc_ch"];
+
+p10 [label="bwa_bam"];
+p11 [shape=point];
+p10 -> p11 [label="bwa_bam_log_ch"];
+
+p13 [label="remove_duplicates"];
+p27 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="groupTuple"];
+p13 -> p27 [label="remove_duplicates_ch"];
+
+p13 [label="remove_duplicates"];
+p16 [label="pmdtools_lib"];
+p13 -> p16 [label="remove_duplicates_pmdtools_metrics_lib_ch"];
+
+p13 [label="remove_duplicates"];
+p19 [label="oxoG_metrics_lib"];
+p13 -> p19 [label="remove_duplicates_oxoG_metrics_lib_ch"];
+
+p13 [label="remove_duplicates"];
+p21 [label="wgs_metrics_lib"];
+p13 -> p21 [label="remove_duplicates_wgs_metrics_lib_ch"];
+
+p13 [label="remove_duplicates"];
+p15 [shape=point];
+p13 -> p15 [label="remove_duplicates_insert_size_lib_ch"];
+
+p13 [label="remove_duplicates"];
+p23 [label="collect_alignment_metrics_library"];
+p13 -> p23 [label="remove_duplicates_collect_alignment_metrics_library_ch"];
+
+p13 [label="remove_duplicates"];
+p25 [label="bam_to_vcf_library"];
+p13 -> p25 [label="remove_duplicates_bam_to_vcf_library_ch"];
+
+p13 [label="remove_duplicates"];
+p14 [shape=point];
+p13 -> p14 [label="remove_duplicates_log_ch"];
+
+p13 [label="remove_duplicates"];
+p47 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p13 -> p47 [label="remove_duplicates_metrics_ch"];
+
+p13 [label="remove_duplicates"];
+p48 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p13 -> p48 [label="remove_duplicates_flagstat_ch"];
+
+p13 [label="remove_duplicates"];
+p49 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p13 -> p49 [label="remove_duplicates_idxstats_ch"];
+
+p16 [label="pmdtools_lib"];
+p18 [shape=point];
+p16 -> p18 [label="pmd_metrics_lib_log_ch"];
+
+p16 [label="pmdtools_lib"];
+p17 [shape=point];
+p16 -> p17 [label="pmd_metrics_lib_stats_ch"];
+
+p19 [label="oxoG_metrics_lib"];
+p20 [shape=point];
+p19 -> p20 [label="oxoG_metrics_lib_log_ch"];
+
+p19 [label="oxoG_metrics_lib"];
+p58 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p19 -> p58 [label="oxoG_metrics_lib_stats_ch"];
+
+p21 [label="wgs_metrics_lib"];
+p22 [shape=point];
+p21 -> p22 [label="wgs_metrics_lib_log_ch"];
+
+p21 [label="wgs_metrics_lib"];
+p57 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p21 -> p57 [label="wgs_metrics_lib_stats_ch"];
+
+p23 [label="collect_alignment_metrics_library"];
+p24 [shape=point];
+p23 -> p24 [label="collect_alignment_metrics_library_log_ch"];
+
+p23 [label="collect_alignment_metrics_library"];
+p50 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p23 -> p50 [label="collect_alignment_metrics_library_stats_ch"];
+
+p25 [label="bam_to_vcf_library"];
+p26 [shape=point];
+p25 -> p26 [label="bam_to_vcf_library_log_ch"];
+
+p25 [label="bam_to_vcf_library"];
+p54 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p25 -> p54 [label="bam_to_vcf_library_stats_ch"];
+
+p27 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="groupTuple"];
+p28 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+p27 -> p28;
+
+p28 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+p29 [label="merge_bams"];
+p28 -> p29 [label="indiv_merge_bams_ch"];
+
+p29 [label="merge_bams"];
+p31 [label="pmdtools"];
+p29 -> p31 [label="merged_bams_pmdtools_metrics_ch"];
+
+p29 [label="merge_bams"];
+p38 [label="bam_to_vcf"];
+p29 -> p38 [label="merged_bams_bam_to_vcf_ch"];
+
+p29 [label="merge_bams"];
+p30 [shape=point];
+p29 -> p30 [label="merged_bams_insert_size_ch"];
+
+p29 [label="merge_bams"];
+p34 [label="wgs_metrics"];
+p29 -> p34 [label="merged_bams_wgs_metrics_ch"];
+
+p29 [label="merge_bams"];
+p36 [label="collect_alignment_metrics"];
+p29 -> p36 [label="merged_bams_collect_alignment_metrics_ch"];
+
+p29 [label="merge_bams"];
+p44 [label="randfa"];
+p29 -> p44 [label="merged_bams_randfa_ch"];
+
+p29 [label="merge_bams"];
+p52 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p29 -> p52 [label="merge_bams_flagstat_ch"];
+
+p29 [label="merge_bams"];
+p53 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p29 -> p53 [label="merge_bams_idxstats_ch"];
+
+p31 [label="pmdtools"];
+p33 [shape=point];
+p31 -> p33 [label="pmd_metrics_log_ch"];
+
+p31 [label="pmdtools"];
+p32 [shape=point];
+p31 -> p32 [label="pmd_metrics_stats_ch"];
+
+p34 [label="wgs_metrics"];
+p35 [shape=point];
+p34 -> p35 [label="wgs_metrics_log_ch"];
+
+p34 [label="wgs_metrics"];
+p56 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p34 -> p56 [label="wgs_metrics_stats_ch"];
+
+p36 [label="collect_alignment_metrics"];
+p37 [shape=point];
+p36 -> p37 [label="collect_alignment_metrics_log_ch"];
+
+p36 [label="collect_alignment_metrics"];
+p51 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p36 -> p51 [label="collect_alignment_metrics_stats_ch"];
+
+p38 [label="bam_to_vcf"];
+p41 [label="vcf_to_fasta"];
+p38 -> p41 [label="bam_to_vcf_vcf_to_consensusfa_ch"];
+
+p38 [label="bam_to_vcf"];
+p40 [shape=point];
+p38 -> p40 [label="bam_to_vcf_hets_ch"];
+
+p38 [label="bam_to_vcf"];
+p39 [shape=point];
+p38 -> p39 [label="bam_to_vcf_log_ch"];
+
+p38 [label="bam_to_vcf"];
+p55 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p38 -> p55 [label="bam_to_vcf_stats_ch"];
+
+p41 [label="vcf_to_fasta"];
+p43 [shape=point];
+p41 -> p43 [label="vcf_to_consensusfa_ch"];
+
+p41 [label="vcf_to_fasta"];
+p42 [shape=point];
+p41 -> p42 [label="vcf_to_consensusfa_log_ch"];
+
+p44 [label="randfa"];
+p46 [shape=point];
+p44 -> p46 [label="randfa_ch"];
+
+p44 [label="randfa"];
+p45 [shape=point];
+p44 -> p45 [label="randfa_log_ch"];
+
+p47 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p47 -> p59;
+
+p48 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p48 -> p59;
+
+p49 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p49 -> p59;
+
+p50 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p50 -> p59;
+
+p51 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p51 -> p59;
+
+p52 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p52 -> p59;
+
+p53 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p53 -> p59;
+
+p54 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p54 -> p59;
+
+p55 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p55 -> p59;
+
+p56 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p56 -> p59;
+
+p57 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p57 -> p59;
+
+p58 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p59 [label="multiqc"];
+p58 -> p59;
+
+}
