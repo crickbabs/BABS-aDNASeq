@@ -1,4 +1,5 @@
-# aDNASeq-byBABS
+
+# BABS-aDNASeq
 
 A Nextflow pipeline script for processing aDNASeq samples.
 
@@ -9,28 +10,28 @@ nextflow-quickstart: http://www.nextflow.io/docs/latest/getstarted.html#get-star
 
 ### The Analysis Pipeline Flow
 
-![alt unistrap](docs/aDNASeq-byBABS_map.png) 
+![alt unistrap](docs/BABS-aDNASeq_map.png) 
 
 ### Quick Start
 
-To run an aDNASeq-byBABS analysis you will need to complete the following steps. These are explained in more detail further down.
+To run an BABS-aDNASeq analysis you will need to complete the following steps. These are explained in more detail further down.
 
-1) Obtain aDNASeq-byBABS files from GitHub.
+1) Obtain BABS-aDNASeq files from GitHub.
 2) Install/load nextflow-0.32.0 or higher.
 3) Configure reference genome file paths (genome.yml).
 4) Configure environment profile if running software via a module system.
 5) Create a sample design file.
 6) Run nextflow pipeline.
 
-### Get aDNASeq-byBABS Files
+### Get BABS-aDNASeq Files
 
-To obtain aDNASeq-byBABS files run the following git command.
+To obtain BABS-aDNASeq files run the following git command.
 
-   git clone https://github.com/crickbabs/aDNASeq-byBABS
+   git clone https://github.com/crickbabs/BABS-aDNASeq
 
-aDNASeq-byBABS.nf		The Nextflow script.
-aDNASeq-byBABS			Wrapper script to run an analysis.
-nextflow.config			Main aDNASeq-byBABS config file.
+BABS-aDNASeq.nf		The Nextflow script.
+BABS-aDNASeq			Wrapper script to run an analysis.
+nextflow.config			Main BABS-aDNASeq config file.
 conf/babs_profile.config	Profile configuration for running the script @ The Crick.
 conf/genomes.config		Genomes configuration file for defining reference data.
 conf/multiqc_config.yml		Multiqc configuration used to generate integrated QC report.
@@ -54,7 +55,7 @@ Fastq files are specified in a csv design file with the following columns.
 
 ### Running an aDNASeq-ByBABS Analysis
 
-    aDNASeq-byBABS --outdir ./ --design design.csv --profile babs --genome hg19 --resume
+    BABS-aDNASeq --outdir ./ --design design.csv --profile babs --genome hg19 --resume
 
 ### Output Directories & Files
 
@@ -106,7 +107,7 @@ Alignment QC is assessed using pmdtools and CollectWgsMetrics, CollectWgsMetrics
 
 #### Credits
 
-aDNASeq-byBABS was written and devloped by Philip East & Pontus Skoglund.
+The BABS-aDNASeq nextflow pipeline was written and developed by Philip East & Pontus Skoglund.
 
 The Bioinformatics & Biostatistics Group (BABS) @ The Francis Crick Institute.
 Ancient Genomics @ The Francis Crick Institute.
